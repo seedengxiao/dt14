@@ -12,7 +12,7 @@
 			//页面元素，图片加载
 			function init(){
 				//alert("1");
-				//var picture="zww"+(makeRandom(2)+1)+".jpg";				
+				var picture="zww"+(makeRandom(2)+1)+".jpg";				
 				var html=[];
 				html.push("<table>");
 				for(var i=0; i < 4; i++){
@@ -21,7 +21,7 @@
 						var top="-"+240*j+"px";
 						//alert(top);
 						var left="-"+240*i+"px";
-						html.push('<td id="box_' + i + "_" + j + '" style="background: url(zww1.jpg) '+top+' '+left+';"></td>');
+						html.push('<td id="box_' + i + "_" + j + '" style="background: url('+picture+') '+top+' '+left+';"></td>');
 					}
 					html.push("</tr>");
 				}
@@ -177,7 +177,7 @@
 				}			
 			}
 			function makeRandom(n){
-				return document.write(parseInt(n*Math.random()));
+				return parseInt(n*Math.random());
 			}
 		</script>
 	</head>
