@@ -176,9 +176,9 @@
 					alert(box1);
 					var box2 = "box_"+makeRandom(4)+"_"+makeRandom(4);
 					alert(box2);
-					var box = document.getElementById("box1").style.background;
-					document.getElementById("box1").style.background=document.getElementById("box2").style.background;
-					document.getElementById("box2").style.background=box;
+					var box = document.getElementById(box1).style.background;
+					document.getElementById(box1).style.background=document.getElementById(box2).style.background;
+					document.getElementById(box2).style.background=box;
 				}			
 			}
 			function makeRandom(n){
