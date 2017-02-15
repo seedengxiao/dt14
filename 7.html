@@ -33,7 +33,7 @@
 				document.getElementById("box_3_0").style.background="";
 			}
 			//键盘事件操作
-			function move(event){
+			function move(){
 				switch(event.keyCode){
 					case 37:
 						left();
@@ -166,7 +166,7 @@
 			document.addEventListener('touchstart',startT,false); 
 			document.addEventListener('touchend',endT,false); 
 			//document.addEventListener('touchmove',touches,false); 
-			document.addEventListener('onkeydown',move,false);
+			//document.addEventListener('onkeydown',move,false);
 			
 			function startGame(){
 				for(var i=0;i<20;i++){
@@ -182,7 +182,7 @@
 			}
 		</script>
 	</head>
-	<body onload="init()">
+	<body onload="init()" onkeydown="move()">
 		<div id="pannel"></div>
 		<div id="divStart"></div> 
 		<div id="divMove"></div>
