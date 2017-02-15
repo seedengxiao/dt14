@@ -170,12 +170,9 @@
 			document.addEventListener('keydown',move,false);
 			
 			function startGame(){
-				alert("a");
 				for(var i=0;i<2;i++){
 					var box1 = "box_"+makeRandom(4)+"_"+makeRandom(4);
-					//alert(box1);
 					var box2 = "box_"+makeRandom(4)+"_"+makeRandom(4);
-					//alert(box2);
 					document.getElementById("box_4_0").style.background=document.getElementById(box1).style.background;
 					document.getElementById(box1).style.background=document.getElementById(box2).style.background;
 					document.getElementById(box2).style.background=document.getElementById("box_4_0").style.background;
