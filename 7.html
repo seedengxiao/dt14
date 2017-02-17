@@ -170,12 +170,24 @@
 			document.addEventListener('keydown',move,false);
 			
 			function startGame(){
-				for(var i=0;i<1;i++){
-					var box1 = "box_"+makeRandom(3)+"_"+makeRandom(3);
-					var box2 = "box_"+makeRandom(3)+"_"+makeRandom(3);
-					document.getElementById("box_3_0").style.background=document.getElementById(box1).style.background;
-					document.getElementById(box1).style.background=document.getElementById(box2).style.background;
-					document.getElementById(box2).style.background=document.getElementById("box_3_0").style.background;
+				for(var i=0;i<20;i++){
+					var mov=makeRandom(4);
+					switch(mov){
+					case 0:
+						left();
+						break;
+					case 1:
+						up();
+						break;
+					case 2:
+						rigth();
+						break;
+					case 3:
+						down();
+						break;
+					default:
+						break;
+				}
 				}	
 				document.getElementById("box_3_0").style.background="";
 			}
