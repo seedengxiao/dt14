@@ -44,7 +44,6 @@
 			//移动时的音乐
 			function moveAudio(){
 				var mAudio = new Audio('move.ogg');
-				mAudio.loop = 'loop';
 				mAudio.play();
 			}
 			//键盘事件操作
@@ -57,7 +56,7 @@
 						up();
 						break;
 					case 39:
-						rigth();
+						right();
 						break;
 					case 40:
 						down();
