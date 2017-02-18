@@ -33,11 +33,20 @@
 				//document.getElementById("box_3_0").style.background="";
 				startGame();
 		
-				this.bgAudio = new Audio('1.ogg');
-				this.bgAudio.loop = 'loop';
-				this.bgAudio.play();
+				backgroundAudio();
 			}
-			
+			//背景音乐
+			function backgroundAudio(){
+				var bgAudio = new Audio('1.ogg');
+				bgAudio.loop = 'loop';
+				bgAudio.play();
+			}
+			//移动时的音乐
+			function moveAudio(){
+				var mAudio = new Audio('move.ogg');
+				mAudio.loop = 'loop';
+				mAudio.play();
+			}
 			//键盘事件操作
 			function move(){
 				switch(event.keyCode){
@@ -166,6 +175,7 @@
 				if(startY < endY && (endY-startY) > Math.abs(startX-endX)){
 					down();
 				}
+				moveAudio();
 				success();	
 			}
 			//绑定监听事件
@@ -181,21 +191,21 @@
 				for(var i=0;i<10;i++){
 					var mov=makeRandom(4);
 					switch(mov){
-					case 0:
-						left();
-						break;
-					case 1:
-						up();
-						break;
-					case 2:
-						right();
-						break;
-					case 3:
-						down();
-						break;
-					default:
-						break;
-				}
+						case 0:
+							left();
+							break;
+						case 1:
+							up();
+							break;
+						case 2:
+							right();
+							break;
+						case 3:
+							down();
+							break;
+						default:
+							break;
+					}
 				}	
 				document.getElementById("box_3_0").style.background="";
 			}
