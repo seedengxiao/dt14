@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="gbk">
+		<title>个性化拼图</title>
+		<style type="text/css">
+			#pannelBack{width:960px; height:1280px; }
+		</style>		
+	</head>
+	<body onload="init()">
+		<div style="position:relative;">
+			<img id="pannelBack" src="zww1.jpg" style="opacity:1;" >
+			<canvas id="myCanvas" width="960" height="1280" style="position:absolute;left:0px;"></canvas>
+		</div>	
+	</body>
+	<script type="text/javascript">
+			//页面元素，图片加载
+				
+				
+				//ctx.clearRect(200,200,400,400);
+			function init(){
+				var c=document.getElementById("myCanvas");
+				var ctx=c.getContext("2d");
+				ctx.fillStyle="#999";
+				ctx.fillRect(0,0,960,1280);
+				//ctx.clearRect(200,200,400,400);
+				//ctx.stroke();
+				//var picture="zww"+(makeRandom(1)+1)+".jpg";
+				//document.getElementById("pannelBack").src=picture;
+				//document.getElementById("pannelBack").style.opacity=0.4;
+				//document.getElementById("pannelBack").style.z-index=1;
+				//document.getElementById("pannelOn").style.z-index=2;
+				//backgroundAudio();
+			}
+			//背景音乐
+			function backgroundAudio(){
+				var bgAudio = new Audio('1.ogg');
+				bgAudio.loop = 'loop';
+				bgAudio.play();
+			}
+			//移动时的音乐
+			function moveAudio(){
+				var mAudio = new Audio('move.ogg');
+				mAudio.play();
+			}
+			function clearOn(x,y){
+				var c=document.getElementById("myCanvas");
+				var ctx=c.getContext("2d");
+				ctx.fillStyle="#999";
+				//ctx.fillRect(x-20,y-20,x+20,y+20);
+				ctx.clearRect(x-20,y-20,x+20,y+20);				
+			}
+			//手指放到屏幕上时,触摸点相对浏览器窗口的位置
+			var x=0;
+			var y=0;
+
+			//手指放到屏幕上时触发
+			function startT(ev){
+				x=ev.touches[0].clientX;
+				y=ev.touches[0].clientY;
+				//divStart.innerHTML='Touch start('+ev.touches[0].clientX+', '+ev.touches[0].clientY+')';
+				//clearOn(startX,startY);
+				clearOn(x,y);
+				ev.preventDefault();  //阻止出现滚动条 
+			}
+			//手指离开屏幕时触发
+			function endT(ev){
+				//alert("touchend");
+				x=ev.changedTouches[0].clientX;
+				y=ev.changedTouches[0].clientY;						
+				//divEnd.innerHTML='Touch end('+ev.changedTouches[0].clientX+', '+ev.changedTouches[0].clientY+')'; 
+			}
+			//手指在屏幕上移动时触发
+			function moveT(ev){
+				//alert("touchend");
+				x=ev.changedTouches[0].clientX;
+				y=ev.changedTouches[0].clientY;	
+				clearOn(x,y);				
+				//divEnd.innerHTML='Touch end('+ev.changedTouches[0].clientX+', '+ev.changedTouches[0].clientY+')'; 
+			}
+			
+			//绑定监听事件
+			document.addEventListener('touchstart',startT,false); 
+			document.addEventListener('touchend',endT,false); 
+			document.addEventListener('touchmove',moveT,false); 
+			function makeRandom(n){
+				return parseInt(n*Math.random());
+			}
+		</script>
+</html>
