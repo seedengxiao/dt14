@@ -11,6 +11,9 @@
 		<div style="position:relative;">
 			<img id="pannelBack" src="zww1.jpg" style="opacity:1;" >
 			<canvas id="myCanvas" width="960" height="1280" style="position:absolute;left:0px;"></canvas>
+			<div id="divStart"></div> 
+			<div id="divMove"></div>
+			<div id="divEnd"></div>
 		</div>	
 	</body>
 	<script type="text/javascript">
@@ -44,6 +47,7 @@
 			function startT(ev){
 				x=ev.touches[0].clientX;
 				y=ev.touches[0].clientY;
+				divStart.innerHTML='Touch start('+ev.touches[0].clientX+', '+ev.touches[0].clientY+')';
 				clearOn(x,y);
 				ev.preventDefault();  //阻止出现滚动条 
 			}
@@ -53,7 +57,15 @@
 				x=ev.changedTouches[0].clientX;
 				y=ev.changedTouches[0].clientY;	
 				clearOn(x,y);				
-				//divEnd.innerHTML='Touch end('+ev.changedTouches[0].clientX+', '+ev.changedTouches[0].clientY+')'; 
+				divEnd.innerHTML='Touch end('+ev.changedTouches[0].clientX+', '+ev.changedTouches[0].clientY+')'; 
+			}
+			//手指离开屏幕时触发
+			function endT(ev){
+				//alert("touchend");
+				x=ev.changedTouches[0].clientX;
+				y=ev.changedTouches[0].clientY;	
+				clearOn(x,y);				
+				divEnd.innerHTML='Touch end('+ev.changedTouches[0].clientX+', '+ev.changedTouches[0].clientY+')'; 
 			}			
 			//绑定监听事件
 			document.addEventListener('touchstart',startT,false); 
