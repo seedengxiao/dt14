@@ -9,7 +9,7 @@
 	</head>
 	<body onload="init()">
 		<div style="position:relative;">
-			<img id="pannelBack" src="" style="opacity:1;" >
+			<img id="pannelBack" src="" style="opacity:1;" width="960px" height="1280px">
 			<canvas id="myCanvas" width="960px" height="1280px" style="position:absolute;left:0px;"></canvas>
 			<div id="divStart"></div> 
 			<div id="divMove"></div>
@@ -37,7 +37,6 @@
 				var c=document.getElementById("myCanvas");
 				var ctx=c.getContext("2d");
 				ctx.fillStyle="#999";
-				//ctx.fillRect(x-20,y-20,x+20,y+20);
 				ctx.clearRect(x-20,y-20,40,40);				
 			}
 			//手指放到屏幕上时,触摸点相对浏览器窗口的位置
