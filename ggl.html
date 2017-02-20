@@ -36,8 +36,8 @@
 			function clearOn(x,y){
 				var c=document.getElementById("myCanvas");
 				var ctx=c.getContext("2d");
-				ctx.fillStyle="#999";
-				ctx.clearRect(x-20,y-20,40,40);				
+				//ctx.clearRect(x-20,y-20,40,40);	
+				ctx.clearArc(x,y,30);
 			}
 			//手指放到屏幕上时,触摸点相对浏览器窗口的位置
 			var x=0;
