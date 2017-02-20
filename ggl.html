@@ -4,13 +4,13 @@
 		<meta charset="gbk">
 		<title>刮刮乐</title>
 		<style type="text/css">
-			#pannelBack{width:960px; height:960px; }
+			#pannelBack{width:960px; height:1280px; }
 		</style>		
 	</head>
 	<body onload="init()">
 		<div style="position:relative;">
 			<img id="pannelBack" src="" style="opacity:1;" >
-			<canvas id="myCanvas" width="960px" height="960px" style="position:absolute;left:0px;"></canvas>
+			<canvas id="myCanvas" width="960px" height="1280px" style="position:absolute;left:0px;"></canvas>
 			<div id="divStart"></div> 
 			<div id="divMove"></div>
 			<div id="divEnd"></div>
@@ -22,8 +22,8 @@
 				var c=document.getElementById("myCanvas");
 				var ctx=c.getContext("2d");
 				ctx.fillStyle="#999";
-				ctx.fillRect(0,0,960,960);
-				var picture="zww"+(makeRandom(2)+1)+".jpg";
+				ctx.fillRect(0,0,960,1280);
+				var picture="ggl"+(makeRandom(1)+1)+".jpg";
 				document.getElementById("pannelBack").src=picture;
 				//backgroundAudio();
 			}
