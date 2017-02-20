@@ -2,7 +2,7 @@
 <html>
 	<head>
 		<meta charset="gbk">
-		<title>¸öĞÔ»¯Æ´Í¼</title>
+		<title>ä¸ªæ€§åŒ–æ‹¼å›¾</title>
 		<style type="text/css">
 			#pannelBack{width:960px; height:1280px; }
 		</style>		
@@ -14,72 +14,48 @@
 		</div>	
 	</body>
 	<script type="text/javascript">
-			//Ò³ÃæÔªËØ£¬Í¼Æ¬¼ÓÔØ
-				
-				
-				//ctx.clearRect(200,200,400,400);
+			//é¡µé¢å…ƒç´ ï¼Œå›¾ç‰‡åŠ è½½
 			function init(){
 				var c=document.getElementById("myCanvas");
 				var ctx=c.getContext("2d");
 				ctx.fillStyle="#999";
 				ctx.fillRect(0,0,960,1280);
-				//ctx.clearRect(200,200,400,400);
-				//ctx.stroke();
 				//var picture="zww"+(makeRandom(1)+1)+".jpg";
 				//document.getElementById("pannelBack").src=picture;
-				//document.getElementById("pannelBack").style.opacity=0.4;
-				//document.getElementById("pannelBack").style.z-index=1;
-				//document.getElementById("pannelOn").style.z-index=2;
 				//backgroundAudio();
 			}
-			//±³¾°ÒôÀÖ
+			//èƒŒæ™¯éŸ³ä¹
 			function backgroundAudio(){
 				var bgAudio = new Audio('1.ogg');
 				bgAudio.loop = 'loop';
 				bgAudio.play();
-			}
-			//ÒÆ¶¯Ê±µÄÒôÀÖ
-			function moveAudio(){
-				var mAudio = new Audio('move.ogg');
-				mAudio.play();
 			}
 			function clearOn(x,y){
 				var c=document.getElementById("myCanvas");
 				var ctx=c.getContext("2d");
 				ctx.fillStyle="#999";
 				//ctx.fillRect(x-20,y-20,x+20,y+20);
-				ctx.clearRect(x-20,y-20,x+20,y+20);				
+				ctx.clearRect(x-5,y-5,x+5,y+5);				
 			}
-			//ÊÖÖ¸·Åµ½ÆÁÄ»ÉÏÊ±,´¥ÃşµãÏà¶Ôä¯ÀÀÆ÷´°¿ÚµÄÎ»ÖÃ
+			//æ‰‹æŒ‡æ”¾åˆ°å±å¹•ä¸Šæ—¶,è§¦æ‘¸ç‚¹ç›¸å¯¹æµè§ˆå™¨çª—å£çš„ä½ç½®
 			var x=0;
 			var y=0;
-
-			//ÊÖÖ¸·Åµ½ÆÁÄ»ÉÏÊ±´¥·¢
+			//æ‰‹æŒ‡æ”¾åˆ°å±å¹•ä¸Šæ—¶è§¦å‘
 			function startT(ev){
 				x=ev.touches[0].clientX;
 				y=ev.touches[0].clientY;
-				//divStart.innerHTML='Touch start('+ev.touches[0].clientX+', '+ev.touches[0].clientY+')';
-				//clearOn(startX,startY);
 				clearOn(x,y);
-				ev.preventDefault();  //×èÖ¹³öÏÖ¹ö¶¯Ìõ 
+				ev.preventDefault();  //é˜»æ­¢å‡ºç°æ»šåŠ¨æ¡ 
 			}
-			//ÊÖÖ¸Àë¿ªÆÁÄ»Ê±´¥·¢
-			function endT(ev){
-				//alert("touchend");
-				x=ev.changedTouches[0].clientX;
-				y=ev.changedTouches[0].clientY;						
-				//divEnd.innerHTML='Touch end('+ev.changedTouches[0].clientX+', '+ev.changedTouches[0].clientY+')'; 
-			}
-			//ÊÖÖ¸ÔÚÆÁÄ»ÉÏÒÆ¶¯Ê±´¥·¢
+			//æ‰‹æŒ‡åœ¨å±å¹•ä¸Šç§»åŠ¨æ—¶è§¦å‘
 			function moveT(ev){
 				//alert("touchend");
 				x=ev.changedTouches[0].clientX;
 				y=ev.changedTouches[0].clientY;	
 				clearOn(x,y);				
 				//divEnd.innerHTML='Touch end('+ev.changedTouches[0].clientX+', '+ev.changedTouches[0].clientY+')'; 
-			}
-			
-			//°ó¶¨¼àÌıÊÂ¼ş
+			}			
+			//ç»‘å®šç›‘å¬äº‹ä»¶
 			document.addEventListener('touchstart',startT,false); 
 			document.addEventListener('touchend',endT,false); 
 			document.addEventListener('touchmove',moveT,false); 
