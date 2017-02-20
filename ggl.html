@@ -10,7 +10,7 @@
 	<body onload="init()">
 		<div style="position:relative;">
 			<img id="pannelBack" src="" style="opacity:1;" >
-			<canvas id="myCanvas" width="960px" height="1280px" style="position:absolute;left:0px;"></canvas>
+			<canvas id="myCanvas" width="960px" height="1280px" style="position:absolute;left:0px;top:0px;"></canvas>
 			<div id="divStart"></div> 
 			<div id="divMove"></div>
 			<div id="divEnd"></div>
@@ -23,7 +23,7 @@
 			function init(){
 				ctx.fillStyle="#999";
 				ctx.fillRect(0,0,960,1280);
-				var picture="ggl"+(makeRandom(1)+1)+".jpg";
+				var picture="ggl_"+(makeRandom(6)+1)+".jpg";
 				document.getElementById("pannelBack").src=picture;
 			}
 			function clearCircle( x , y , r ){				
@@ -40,7 +40,7 @@
 					if(imgData.data[i+3]==0){
 						num++;
 						if(num>pers){
-							alert("完成");
+							//alert("完成");
 							ctx.clearRect(0,0,960,1280);
 							return;
 						}
