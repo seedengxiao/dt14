@@ -18,27 +18,27 @@
 	</body>
 	<script type="text/javascript">
 			//页面元素，图片加载
+			var c=document.getElementById("myCanvas");
+			var ctx=c.getContext("2d");
 			function init(){
-				var c=document.getElementById("myCanvas");
-				var ctx=c.getContext("2d");
 				ctx.fillStyle="#999";
 				ctx.fillRect(0,0,960,1280);
 				var picture="ggl"+(makeRandom(1)+1)+".jpg";
 				document.getElementById("pannelBack").src=picture;
 				//backgroundAudio();
 			}
+			function clearCircle( x , y , r ){				
+				for( var i = 0 ; i < Math.round( Math.PI * r ) ; i++ ){
+				var angle = ( i / Math.round( Math.PI * r )) * 360;
+				ctx.clearRect( x , y , Math.sin( angle * ( Math.PI / 180 )) * r , Math.cos( angle * ( Math.PI / 180 )) * r );
+				}
+			}
 			//背景音乐
 			function backgroundAudio(){
 				var bgAudio = new Audio('1.ogg');
 				bgAudio.loop = 'loop';
 				bgAudio.play();
-			}
-			function clearOn(x,y){
-				var c=document.getElementById("myCanvas");
-				var ctx=c.getContext("2d");
-				//ctx.clearRect(x-20,y-20,40,40);	
-				ctx.clearArc(x,y,30);
-			}
+			}			
 			//手指放到屏幕上时,触摸点相对浏览器窗口的位置
 			var x=0;
 			var y=0;
@@ -47,7 +47,7 @@
 				x=ev.touches[0].clientX;
 				y=ev.touches[0].clientY;
 				divStart.innerHTML='Touch start('+ev.touches[0].clientX+', '+ev.touches[0].clientY+')';
-				clearOn(x,y);
+				clearCircle(x,y,30);
 				ev.preventDefault();  //阻止出现滚动条 
 			}
 			//手指在屏幕上移动时触发
@@ -55,7 +55,7 @@
 				//alert("touchend");
 				x=ev.changedTouches[0].clientX;
 				y=ev.changedTouches[0].clientY;	
-				clearOn(x,y);				
+				clearCircle(x,y,30);				
 				divMove.innerHTML='Touch move('+ev.changedTouches[0].clientX+', '+ev.changedTouches[0].clientY+')'; 
 			}
 			//手指离开屏幕时触发
@@ -63,7 +63,7 @@
 				//alert("touchend");
 				x=ev.changedTouches[0].clientX;
 				y=ev.changedTouches[0].clientY;	
-				clearOn(x,y);				
+				clearCircle(x,y,30);			
 				divEnd.innerHTML='Touch end('+ev.changedTouches[0].clientX+', '+ev.changedTouches[0].clientY+')'; 
 			}			
 			//绑定监听事件
