@@ -9,8 +9,8 @@
 	</head>
 	<body onload="init()">
 		<div style="position:relative;">
-			<img id="pannelBack" src="zww1.jpg" style="opacity:1;" >
-			<canvas id="myCanvas" width="960" height="1280" style="position:absolute;left:0px;"></canvas>
+			<img id="pannelBack" src="" style="opacity:1;" >
+			<canvas id="myCanvas" width="960px" height="1280px" style="position:absolute;left:0px;"></canvas>
 			<div id="divStart"></div> 
 			<div id="divMove"></div>
 			<div id="divEnd"></div>
@@ -23,8 +23,8 @@
 				var ctx=c.getContext("2d");
 				ctx.fillStyle="#999";
 				ctx.fillRect(0,0,960,1280);
-				//var picture="zww"+(makeRandom(1)+1)+".jpg";
-				//document.getElementById("pannelBack").src=picture;
+				var picture="zww"+(makeRandom(2)+1)+".jpg";
+				document.getElementById("pannelBack").src=picture;
 				//backgroundAudio();
 			}
 			//背景音乐
@@ -38,7 +38,7 @@
 				var ctx=c.getContext("2d");
 				ctx.fillStyle="#999";
 				//ctx.fillRect(x-20,y-20,x+20,y+20);
-				ctx.clearRect(x-20,y-20,40,40);				
+				ctx.clearRect(x-10,y-10,20,20);				
 			}
 			//手指放到屏幕上时,触摸点相对浏览器窗口的位置
 			var x=0;
