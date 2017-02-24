@@ -104,8 +104,18 @@
 			}
 			//创建水果
 			function createFruit(){
-				fruit.x=makeRandom(12);
-				fruit.y=makeRandom(16);
+				var cover=false;
+				do{
+					fruit.x=makeRandom(12);
+					fruit.y=makeRandom(16);
+					cover=false;
+					for(var i=0;i<snake.length-1;i++){
+						if(fruit.x==snake[i].x && fruit.y==snake[i].y){
+							cover=ture;
+							break;
+						}
+					}
+				}while(cover);				
 				ctx.fillRect(fruit.x*80,fruit.y*80,80,80);				
 			}
 			function gameover(){
