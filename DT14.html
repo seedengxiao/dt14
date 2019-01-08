@@ -1,90 +1,114 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<meta charset="gbk">
-		<title>刮刮乐</title>
+		<meta charset="utf-8">
+		<title>倒计时</title>
 		<style type="text/css">
-			#pannelBack{width:960px; height:1280px; }
+			html {
+			  display: grid;
+			  min-height: 100%;
+			}
+
+			body {
+			  display: grid;
+			  background: #183059;
+			}
+
+			.container {
+			  position: relative;
+			  margin: auto;
+			  overflow: hidden;
+			  width: 650px;
+			  height: 280px;
+			}
+
+			h1 {
+			  font-family: "Lato", sans-serif;
+			  text-align: center;
+			  margin-top: 2em;
+			  font-size: 1em;
+			  text-transform: uppercase;
+			  letter-spacing: 5px;
+			  color: #F6F4F3;
+			}
+
+			#timer {
+			  color: #F6F4F3;
+			  text-align: center;
+			  text-transform: uppercase;
+			  font-family: "Lato", sans-serif;
+			  font-size: .7em;
+			  letter-spacing: 5px;
+			}
+
+			.days, .hours, .minutes, .seconds {
+			  display: inline-block;
+			  padding: 20px;
+			  width: 100px;
+			  border-radius: 5px;
+			}
+
+			.days {
+			  background: #EF2F3C;
+			}
+
+			.hours {
+			  background: #F6F4F3;
+			  color: #183059;
+			}
+
+			.minutes {
+			  background: #276FBF;
+			}
+
+			.seconds {
+			  background: #F0A202;
+			}
+
+			.numbers {
+			  font-family: "Montserrat", sans-serif;
+			  color: #183059;
+			  font-size: 5em;
+			}
 		</style>		
 	</head>
-	<body onload="init()">
-		<div style="position:relative;">
-			<img id="pannelBack" src="" style="opacity:1;" >
-			<canvas id="myCanvas" width="960px" height="1280px" style="position:absolute;left:0px;top:0px;"></canvas>
-			<div id="divStart"></div> 
-			<div id="divMove"></div>
-			<div id="divEnd"></div>
+	<body>
+		<div class="container">
+			<h1>洪礼卫 刘欢</h1>
+			<h1>wedding date</h1>
+			<div id="timer"></div>
 		</div>	
 	</body>
 	<script type="text/javascript">
-			//页面元素，图片加载
-			var c=document.getElementById("myCanvas");
-			var ctx=c.getContext("2d");
-			function init(){
-				ctx.fillStyle="#999";
-				ctx.fillRect(0,0,960,1280);
-				ctx.font="200px arial";
-				for(var i=0;i<6;i++){
-					//ctx.fillText("刮啥得啥",80,200*(i+1));
-					ctx.strokeText("刮啥得啥",80,200*(i+1));
-				}				
-				var picture="ggl_"+(makeRandom(6)+1)+".jpg";
-				document.getElementById("pannelBack").src=picture;
-			}
-			function clearCircle( x , y , r ){				
-				for( var i = 0 ; i < Math.round( Math.PI * r ) ; i++ ){
-				var angle = ( i / Math.round( Math.PI * r )) * 360;
-				ctx.clearRect( x , y , Math.sin( angle * ( Math.PI / 180 )) * r , Math.cos( angle * ( Math.PI / 180 )) * r );
-				}
-			}
-			var pers=960*1280*1/2;
-			function clearAll(){
-				var imgData=ctx.getImageData(0,0,960,1280);
-				var num=0;				
-				for (var i=0;i<imgData.data.length;i+=4){
-					if(imgData.data[i+3]==0){
-						num++;
-						if(num>pers){
-							//alert("完成");
-							ctx.clearRect(0,0,960,1280);
-							return;
-						}
-					}
-				}
-			}		
-			//手指放到屏幕上时,触摸点相对浏览器窗口的位置
-			var x=0;
-			var y=0;
-			//手指放到屏幕上时触发
-			function startT(ev){
-				x=ev.touches[0].clientX;
-				y=ev.touches[0].clientY;
-				//divStart.innerHTML='Touch start('+ev.touches[0].clientX+', '+ev.touches[0].clientY+')';
-				clearCircle(x,y,40);
-				ev.preventDefault();  //阻止出现滚动条 
-			}
-			//手指在屏幕上移动时触发
-			function moveT(ev){
-				//alert("touchend");
-				x=ev.changedTouches[0].clientX;
-				y=ev.changedTouches[0].clientY;	
-				clearCircle(x,y,40);				
-				//divMove.innerHTML='Touch move('+ev.changedTouches[0].clientX+', '+ev.changedTouches[0].clientY+')'; 
-			}
-			//手指离开屏幕时触发
-			function endT(ev){
-				//alert("touchend");
-				x=ev.changedTouches[0].clientX;
-				y=ev.changedTouches[0].clientY;	
-				clearAll();			
-				//divEnd.innerHTML='Touch end('+ev.changedTouches[0].clientX+', '+ev.changedTouches[0].clientY+')'; 
-			}			
-			//绑定监听事件
-			document.addEventListener('touchstart',startT,false); 
-			document.addEventListener('touchend',endT,false); 
-			document.addEventListener('touchmove',moveT,false); 
-			function makeRandom(n){
-				return parseInt(n*Math.random());
-			}
+			const weddingDate = new Date("February 8, 2019 12:00:00").getTime();
+
+			// countdown
+			let timer = setInterval(function() {
+
+			  // get today's date
+			  const today = new Date().getTime();
+
+			  // get the difference
+			  const diff = weddingDate - today;
+
+			  // math
+			  let days = Math.floor(diff / (1000 * 60 * 60 * 24));
+			  let hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+			  let minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+			  let seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+			  // display
+			  document.getElementById("timer").innerHTML =
+				"<div class=\"days\"> \
+			  <div class=\"numbers\">" + days + "</div>days</div> \
+			<div class=\"hours\"> \
+			  <div class=\"numbers\">" + hours + "</div>hours</div> \
+			<div class=\"minutes\"> \
+			  <div class=\"numbers\">" + minutes + "</div>minutes</div> \
+			<div class=\"seconds\"> \
+			  <div class=\"numbers\">" + seconds + "</div>seconds</div> \
+			</div>";
+
+			}, 1000);
 		</script>
 </html>
